@@ -1,30 +1,56 @@
 #!/usr/bin/python
 #pip install mysqlclient
 #pythonmicroservice.c7v0hpe7htge.us-east-2.rds.amazonaws.com
-# comment
 import pika
 import MySQLdb
 import json
-
+import requests
+import sys
+import asyncio
+import aiohttp
 
 class Microservice:
-    
+
     @staticmethod
-    def microserviceLogic ():
+    def microserviceLogic (searchType, criteria, url):
 
         try:
-            db = MySQLdb.connect(host="localhost", user="root", passwd="*******", db="prueba_arquitecturas_agiles")        
-            cur = db.cursor()
+            print("parámetros en script:", str(sys.argv[0]))
+            print("searchType: ", str(sys.argv[1]))
+            print("criteria: ", str(sys.argv[2]))
+            print("url: ", str(sys.argv[3]))
 
-            cur.execute("SELECT * FROM persona")
 
-            for row in cur.fetchall():
-                print (json.dumps(row, indent=4, sort_keys=True, default=str))
-            db.close()
+            if searchType == "PRESE":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "COLOR":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "MATER":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "PROVE":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "ESPAC":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "CATEG":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            elif searchType == "SERVI":
+                param = {'criteria': criteria}
+                r = requests.get(url, param)
+            else:
+                param = {'criteria': criteria}
+                r = requests.get(url, param)       
 
-        except IOError as e:
+            print(r.json())
 
-            print ("Error BD: ".format(e.errno, e.strerror))
+        except ConnectionError as e:
+            print ("Error en conexión a url ".url)
+
 
     @staticmethod
     def queuePublishMessage ():
@@ -46,8 +72,9 @@ class Microservice:
 
         
 
-Microservice.microserviceLogic()
-Microservice.queuePublishMessage()
+Microservice.microserviceLogic(sys.argv[1], sys.argv[2], sys.argv[3])
+#Microservice.get_http(sys.argv[3])
+#Microservice.queuePublishMessage()
 
    
 

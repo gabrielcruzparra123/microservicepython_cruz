@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 
 
-EXPOSE 5001
-EXPOSE 5000
-CMD python microservicepython.py
+EXPOSE 5003:5003
+
+CMD python microservicepython_cruz.py
 
 ADD . /code
 WORKDIR /code

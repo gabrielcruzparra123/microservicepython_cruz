@@ -9,8 +9,6 @@ import sys
 import asyncio
 import aiohttp
 from flask import Flask, request 
-#import HTTPServer
-#from urlparse import parse_qs
 
 class Microservice:
 

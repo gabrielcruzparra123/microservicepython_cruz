@@ -9,8 +9,6 @@ import sys
 import asyncio
 import aiohttp
 from flask import Flask, request 
-from django.http import HttpResponse
-from django.core import serializers
 
 class Microservice:
 

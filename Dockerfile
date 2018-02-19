@@ -16,5 +16,4 @@ RUN pip install pymysql
 RUN pip install mysqlclient
 RUN pip install pika
 RUN pip install requests
-RUN pip install django
 RUN pip install Flask

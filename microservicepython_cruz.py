@@ -51,7 +51,7 @@ def microserviceLogic ():
 
 
     except IOError as e:
-        print ("Error en conexion a url ".url)
+        print ("Error en conexion a url "+url)
 
 
 if __name__ == '__main__':
